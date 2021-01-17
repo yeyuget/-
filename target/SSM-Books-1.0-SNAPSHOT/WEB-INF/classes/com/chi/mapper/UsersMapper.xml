@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chi.mapper.UsersMapper">
+    <insert id="insertUsers" parameterType="users">
+        insert into users values(#{name},#{sfz},#{phone},#{thing},#{coment})
+    </insert>
+    <delete id="deleteUsersByName" parameterType="string">
+        delete from users where name=#{name}
+    </delete>
+    <update id="updateUsers" parameterType="users">
+        update users set sfz=#{sfz},phone=#{phone},thing=#{thing},coment=#{coment} where name=#{name}
+    </update>
+    <select id="selectAll" resultType="users">
+        select*from users
+    </select>
+    <select id="selectByName" resultType="users">
+        select * from users where name like concat('%',#{name},'%')
+    </select>
+    <select id="selectUserByName" parameterType="string" resultType="users">
+        select * from users where name=#{name}
+    </select>
+</mapper>
